@@ -1,0 +1,12 @@
+video_capture = cv2.VideoCapture(0) # We turn the webcam on. 
+
+while True: # We repeat infinitely (until break):
+    _, frame = video_capture.read() # We get the last frame.
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) # We do some colour transformations.
+    canvas = detect(gray, frame) # We get the output of our detect function.
+    cv2.imshow('Video', canvas) # We display the outputs.
+    if cv2.waitKey(1) & 0xFF == ord('q'): # If we type on the keyboard:
+        break # We stop the loop.
+
+video_capture.release() # We turn the webcam off.
+cv2.destroyAllWindows() # We destroy all the windows inside which the images were displayed.
